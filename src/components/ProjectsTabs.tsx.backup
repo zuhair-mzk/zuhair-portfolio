@@ -1,0 +1,264 @@
+"use client";
+
+import { useState } from "react";
+
+type ProjectCategory = "Quantum Computing" | "Cybersecurity & Networking" | "Software Engineering" | "Leadership & Community";
+
+interface Project {
+  title: string;
+  body: string;
+  meta: string;
+  tags: string[];
+  links?: { label: string; url: string }[];
+  timeline?: string;
+}
+
+const projectsData: Record<ProjectCategory, Project[]> = {
+  "Quantum Computing": [
+    {
+      title: "Hybrid Security in the Quantum Era",
+      body: "Ongoing research under Prof. Marcelo Ponce investigating hybrid quantum-classical security systems by analyzing QKD protocols (BB84, E91) against lattice-based PQC schemes.",
+      meta: "Winner of Best Poster – CMS Undergraduate Research Symposium 2025 · Publication in progress",
+      tags: ["PQC", "QKD", "Research"],
+      links: [{ label: "Poster", url: "https://www.canva.com/design/DAG1Vto1yUQ/9BjmBWVbk2LPWjAUdFQYxA/view" }],
+      timeline: "March 2025 – Present",
+    },
+    {
+      title: "PhotonQML – Variational Quantum Classifier",
+      body: "Developing a variational quantum classifier on photonic hardware simulators using PennyLane and Strawberry Fields. Benchmarking CV models against classical baselines.",
+      meta: "Exploring circuit designs with beamsplitters and continuous-variable gates",
+      tags: ["PennyLane", "Strawberry Fields", "QML"],
+      timeline: "June 2025 – Present",
+    },
+    {
+      title: "PennyLane Codebook Completion",
+      body: "Completed all modules of Xanadu's PennyLane Codebook, mastering quantum circuit design, optimization, and hybrid quantum-classical algorithms. Detailed solutions in GitHub repo.",
+      meta: "Full completion with original solutions to all chapters and exercises",
+      tags: ["PennyLane", "Python", "Jupyter"],
+      links: [{ label: "GitHub", url: "https://github.com/zuhair-mzk/quantum_computing" }],
+      timeline: "May – July 2025",
+    },
+    {
+      title: "Quantum Computing Course – UofT",
+      body: "Completed Introduction to Quantum Computing under Prof. Marcelo Ponce. Delivered research presentation on PQC & QKD exploring their complementary roles in hybrid security.",
+      meta: "Topics: Linear algebra, quantum mechanics, tunneling, Bell inequalities, cryptographic applications",
+      tags: ["QC Theory", "PQC", "QKD"],
+      links: [
+        { label: "Course Site", url: "https://cmsweb.utsc.utoronto.ca/marcelo-ponce/teaching/d94--qc/index.html" },
+        { label: "Presentation", url: "https://drive.google.com/drive/folders/179TPIacUaYcYeV8Jj4zznRIGlUpDnQD3?usp=sharing" },
+      ],
+      timeline: "Winter 2025",
+    },
+    {
+      title: "Qiskit Global Summer School 2025",
+      body: "Completed all labs and assignments for IBM's Qiskit Global Summer School, earning Quantum Excellence badge for full completion. Focus on quantum algorithms and noise modeling.",
+      meta: "Advanced quantum algorithms, circuit optimization, and practical implementation",
+      tags: ["IBM Quantum", "Qiskit", "Python"],
+      links: [
+        { label: "GitHub", url: "https://github.com/zuhair-mzk/qgss-2025" },
+        { label: "Certificate", url: "/qiskit-certificate.pdf" },
+      ],
+      timeline: "August 2025",
+    },
+    {
+      title: "Qiskit Fall Fest @ UofT 2025",
+      body: "Placed 3rd overall at University of Toronto Qiskit Fall Fest Hackathon. Worked on hybrid quantum-classical learning models using Qiskit and PennyLane.",
+      meta: "24-hour hackathon focused on quantum machine learning applications",
+      tags: ["Qiskit", "QML", "Hackathon"],
+      links: [{ label: "GitHub", url: "https://github.com/zuhair-mzk/utqc-qlearn-25-26" }],
+      timeline: "October 2025",
+    },
+    {
+      title: "Q-SITE Conference 2025",
+      body: "Active Partnerships and Hackathon Associate for Q-SITE Toronto 2025. Contributing to sponsor outreach, challenge development, and hackathon logistics.",
+      meta: "Student-led quantum conference bridging academia, industry, and education",
+      tags: ["Outreach", "Event Management", "Community"],
+      links: [
+        { label: "Website", url: "https://www.qsiteconf.ca/" },
+        { label: "Instagram", url: "https://www.instagram.com/qsite.toronto/" },
+      ],
+      timeline: "2025 – Present",
+    },
+    {
+      title: "IBM Quantum Developer Certification",
+      body: "Currently preparing for IBM Certified Quantum Developer Exam, focusing on quantum algorithms, circuit optimization, and hardware implementation.",
+      meta: "Comprehensive certification covering Qiskit, quantum computing fundamentals, and practical applications",
+      tags: ["IBM Quantum", "Qiskit", "Certification"],
+      timeline: "Ongoing (2025)",
+    },
+  ],
+  "Cybersecurity & Networking": [
+    {
+      title: "Google Cybersecurity Professional Certificate",
+      body: "Completed the full 8-course Google Cybersecurity Certificate (v2). Hands-on experience with SIEM tools, Linux, SQL, IDS systems, and Python automation. Built incident-response workflows and analyzed threats.",
+      meta: "Private repo documenting all labs, exercises, and tools · Verified competency in risk assessment, network defense, and modern security tooling",
+      tags: ["SIEM", "Linux", "Python", "IDS"],
+      links: [
+        { label: "Credly Badge", url: "https://www.credly.com/go/BiCrN8O2" },
+        { label: "Coursera Cert", url: "https://coursera.org/verify/professional-cert/PTNLUFMTLR5Y" },
+      ],
+      timeline: "2025",
+    },
+    {
+      title: "Cybersecurity CTF Portfolio (15+ Challenges)",
+      body: "Solved challenges across cryptography, reverse engineering, packet sniffing, TLS simulation, and Docker-based security. Structured writeups with attack methodology, red-team mindset, and mitigation notes.",
+      meta: "Private repo with sanitized solutions · Includes AES cracking, ChaCha20, ARP spoofing, SQL injection, shellcode debugging · Ethical disclaimer included",
+      tags: ["CTF", "Cryptography", "Reverse Engineering", "Packet Analysis"],
+      timeline: "Ongoing",
+    },
+    {
+      title: "Offline Social Network – Security Contributions",
+      body: "Reviewed backend for security vulnerabilities, improved input validation/sanitization across APIs. Helped design secure authentication flows with short-lived JWTs and device-bound sessions.",
+      meta: "Enforced bcrypt/argon2 password storage · Built audit logging · Location privacy with obfuscation · Rate-limiting and endpoint throttling",
+      tags: ["Security Review", "JWT", "API Security"],
+      links: [
+        { label: "Website", url: "https://offlinesocialnetwork.com" },
+        { label: "App Store", url: "https://apps.apple.com/ca/app/offline-app/id6748900038" },
+        { label: "Instagram", url: "https://www.instagram.com/trulyoffline/" },
+      ],
+      timeline: "2024-2025",
+    },
+    {
+      title: "Network Engineering Labs (CSCD58)",
+      body: "Completed 4 comprehensive labs: (1) Mininet topology building, ICMP/ARP analysis with Wireshark, (2) Ethernet frames, VLANs, iperf testing, (3) Python HTTP server deployment and traffic analysis, (4) SDN with POX/OpenFlow controller-based routing.",
+      meta: "Hands-on network simulation, protocol analysis, and software-defined networking",
+      tags: ["Mininet", "Wireshark", "SDN", "OpenFlow"],
+      timeline: "Fall 2024",
+    },
+    {
+      title: "Intrusion Detection System (IDS)",
+      body: "Final term project building a packet-inspection IDS. Designing rules for anomaly detection and basic signature checks. Integrating Python tooling, PCAP analysis, and network event logging.",
+      meta: "Currently working on · Real-time packet inspection and threat detection",
+      tags: ["IDS", "Python", "PCAP", "Anomaly Detection"],
+      timeline: "In Progress",
+    },
+    {
+      title: "CompTIA Security+ Certification",
+      body: "Currently preparing for CompTIA Security+ (SY0-701). Focus areas: threat modeling, OS hardening, crypto systems, network defense, IAM, and cloud security.",
+      meta: "Industry-standard certification covering comprehensive security fundamentals",
+      tags: ["CompTIA", "Security+", "Certification"],
+      timeline: "Expected Early 2026",
+    },
+  ],
+  "Software Engineering": [
+    {
+      title: "CMS Connect – Android App for Department Events & Feedback",
+      body: "Led a 4-person Scrum team building an Android app that centralizes CMS department announcements, events, POSt eligibility checks, and student feedback. Implemented authentication, event RSVP, announcements feed, complaints submission, and rating flows backed by Firebase.",
+      meta: "Applied Clean Architecture + MVP for testability · Wrote JUnit + Mockito tests for validation · Managed sprints, standups, and Jira board as Scrum Master",
+      tags: ["Android", "Java/Kotlin", "Firebase", "MVP", "JUnit/Mockito", "Scrum"],
+      links: [
+        { label: "GitHub", url: "https://github.com/MustafaTimbawala/B07GR12" }
+      ],
+      timeline: "Fall 2024",
+    },
+    {
+      title: "Quotis – Real-Time Service Marketplace",
+      body: "Architected and led development of a real-time platform connecting users with handymen, featuring multimedia job postings, WebSocket messaging, and live arrival tracking. Built a React Native + TypeScript frontend with MongoDB + AWS S3 backend for scalable data storage and secure file uploads.",
+      meta: "Co-founder & Tech Lead · Secured $4,000 in grants · 20+ freelancers waitlisted for onboarding · Managed agile delivery as Scrum Master",
+      tags: ["React Native", "TypeScript", "Node.js", "MongoDB", "AWS S3", "WebSockets", "System Design"],
+      links: [
+        { label: "GitHub", url: "https://github.com/UofT-UTSC-CS-sandbox/final-term-project-quotis" }
+      ],
+      timeline: "Winter 2024",
+    },
+    {
+      title: "Concurrent System Monitoring Tool",
+      body: "Built a concurrent system monitoring tool in C that reports CPU, memory, and user-session statistics on Linux in real time. Used multi-process architecture with fork() + pipes for parallel data collection. Implemented robust signal handling for SIGINT/SIGTSTP with multiple output modes including ASCII graphics.",
+      meta: "Direct Linux kernel interface interaction via /proc/stat, /proc/uptime, sysinfo, and utmp · Production-quality C code with Dockerfile, Makefile, and comprehensive CLI",
+      tags: ["C", "Linux", "Concurrency", "Pipes & IPC", "Signal Handling", "Docker"],
+      links: [
+        { label: "GitHub", url: "https://github.com/zuhair-mzk/concurrent-system-monitor" }
+      ],
+      timeline: "Fall 2024",
+    },
+    {
+      title: "MIPS Platformer Assembly Game",
+      body: "Developed a single-screen platformer entirely in MIPS assembly, rendering directly to a memory-mapped framebuffer. Implemented a full game loop with movement, jumping + gravity, enemy AI, collision detection, health bar, win/lose states, and a start menu using memory-mapped I/O for keyboard input.",
+      meta: "Structured as state machine with sprite drawing/erasing routines · 0x00RRGGBB color encoding for collision logic · Thoroughly documented architecture for teaching purposes",
+      tags: ["MIPS Assembly", "Game Dev", "Memory-Mapped I/O", "Low-Level Graphics"],
+      links: [
+        { label: "GitHub", url: "https://github.com/zuhair-mzk/check-p" },
+        { label: "Demo Video", url: "https://drive.google.com/file/d/1iuyiDxy0tpuYqMQSArPMI28lJWRybFHq/view?usp=sharing" }
+      ],
+      timeline: "Winter 2024",
+    },
+    {
+      title: "StockSocial – Stock Portfolio Social Network",
+      body: "Built a full-stack web app combining stock portfolio tracking with social networking — portfolios, analytics, and shared stock lists. Designed a PostgreSQL schema normalized to BCNF with entities for users, portfolios, holdings, transactions, stock lists, friendships, and reviews.",
+      meta: "FastAPI backend with async database access · Portfolio valuation, volatility/beta computation · React + Tailwind frontend · Social features: friend system, sharable lists with access control, 4,000-character reviews",
+      tags: ["FastAPI", "Python", "PostgreSQL", "React", "Tailwind CSS", "Data Analytics"],
+      links: [
+        { label: "GitHub", url: "https://github.com/zuhair-mzk/StockSocial" }
+      ],
+      timeline: "Fall 2024",
+    },
+  ],
+  "Leadership & Community": [],
+};
+
+export default function ProjectsTabs() {
+  const [activeTab, setActiveTab] = useState<ProjectCategory>("Quantum Computing");
+
+  return (
+    <div>
+      {/* Tab buttons */}
+      <div className="mb-8 flex flex-wrap gap-3">
+        {(Object.keys(projectsData) as ProjectCategory[]).map((category) => (
+          <button
+            key={category}
+            onClick={() => setActiveTab(category)}
+            className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
+              activeTab === category
+                ? "bg-cyan-400/20 text-cyan-300 border-2 border-cyan-400/50"
+                : "bg-slate-800/50 text-slate-400 border-2 border-slate-700/50 hover:border-cyan-400/30 hover:text-cyan-400"
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      {/* Project Cards Grid */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {projectsData[activeTab].map((project, index) => (
+          <article
+            key={index}
+            className="card p-6 sm:p-7 hover:border-cyan-400/30 transition-all opacity-0 animate-fadeIn"
+            style={{ animationDelay: `${index * 50}ms` }}
+          >
+            {project.timeline && (
+              <p className="text-xs text-cyan-400 font-semibold mb-2 uppercase tracking-wide">
+                {project.timeline}
+              </p>
+            )}
+            <h3 className="text-xl font-bold mb-3">{project.title}</h3>
+            <p className="text-base text-slate-300 mb-3 leading-relaxed">{project.body}</p>
+            <p className="text-sm text-slate-400 mb-4">{project.meta}</p>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.tags.map((tag) => (
+                <span key={tag} className="tag text-xs px-3 py-1">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            {project.links && project.links.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {project.links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors border border-cyan-500/30 hover:border-cyan-400/50 rounded-lg px-3 py-1.5"
+                  >
+                    {link.label} →
+                  </a>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
