@@ -105,12 +105,12 @@ export default function SkillsTabs() {
   return (
     <div className="w-full">
       {/* Tab buttons */}
-      <div className="flex flex-wrap gap-3 mb-8 justify-center">
+      <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center">
         {(Object.keys(skillsData) as SkillCategory[]).map((category) => (
           <button
             key={category}
             onClick={() => setActiveTab(category)}
-            className={`px-6 py-3 rounded-full text-sm font-semibold transition-all ${
+            className={`px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold transition-all ${
               activeTab === category
                 ? "bg-cyan-400 text-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.5)]"
                 : "bg-slate-800/50 text-slate-300 border border-slate-700/50 hover:border-cyan-400/50"
@@ -122,17 +122,17 @@ export default function SkillsTabs() {
       </div>
 
       {/* Skills display */}
-      <div className="card p-8 min-h-[300px]">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div className="card p-4 sm:p-8 min-h-[200px] sm:min-h-[300px]">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
           {skillsData[activeTab].map((skill, index) => (
             <div
               key={skill}
-              className="flex items-center justify-center p-4 rounded-xl bg-slate-800/50 border border-slate-700/30 hover:border-cyan-400/50 hover:bg-slate-800/80 transition-all cursor-default text-center"
+              className="flex items-center justify-center p-2 sm:p-4 rounded-lg sm:rounded-xl bg-slate-800/50 border border-slate-700/30 hover:border-cyan-400/50 hover:bg-slate-800/80 transition-all cursor-default text-center"
               style={{
                 animation: `fadeIn 0.3s ease-out ${index * 0.05}s both`,
               }}
             >
-              <span className="text-sm font-medium text-slate-200">{skill}</span>
+              <span className="text-xs sm:text-sm font-medium text-slate-200">{skill}</span>
             </div>
           ))}
         </div>

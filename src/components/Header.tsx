@@ -41,46 +41,62 @@ export default function Header() {
 
       {/* Mobile menu panel */}
       {open && (
-        <div className="sm:hidden border-t border-slate-800 bg-slate-950/95 backdrop-blur-lg">
-          <div className="container-main flex flex-col gap-3 py-4">
+        <div className="sm:hidden border-t border-slate-800 bg-gradient-to-b from-slate-950 to-slate-900 backdrop-blur-lg animate-slideDown shadow-lg">
+          <div className="container-main flex flex-col gap-1 py-3">
             <a 
               href="#about" 
               onClick={() => setOpen(false)} 
-              className="text-base text-slate-200 hover:text-cyan-300 transition-colors py-1"
+              className="text-base text-slate-200 hover:text-cyan-300 hover:bg-cyan-400/10 transition-all py-3 px-4 rounded-lg font-medium"
             >
               About
             </a>
             <a 
               href="#experience" 
               onClick={() => setOpen(false)} 
-              className="text-base text-slate-200 hover:text-cyan-300 transition-colors py-1"
+              className="text-base text-slate-200 hover:text-cyan-300 hover:bg-cyan-400/10 transition-all py-3 px-4 rounded-lg font-medium"
             >
               Experience
             </a>
             <a 
               href="#projects" 
               onClick={() => setOpen(false)} 
-              className="text-base text-slate-200 hover:text-cyan-300 transition-colors py-1"
+              className="text-base text-slate-200 hover:text-cyan-300 hover:bg-cyan-400/10 transition-all py-3 px-4 rounded-lg font-medium"
             >
               Projects
             </a>
             <a 
               href="#skills" 
               onClick={() => setOpen(false)} 
-              className="text-base text-slate-200 hover:text-cyan-300 transition-colors py-1"
+              className="text-base text-slate-200 hover:text-cyan-300 hover:bg-cyan-400/10 transition-all py-3 px-4 rounded-lg font-medium"
             >
               Skills
             </a>
             <a 
               href="#contact" 
               onClick={() => setOpen(false)} 
-              className="text-base text-slate-200 hover:text-cyan-300 transition-colors py-1"
+              className="text-base text-slate-200 hover:text-cyan-300 hover:bg-cyan-400/10 transition-all py-3 px-4 rounded-lg font-medium"
             >
               Contact
             </a>
           </div>
         </div>
       )}
+      
+      <style jsx>{`
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-slideDown {
+          animation: slideDown 0.2s ease-out;
+        }
+      `}</style>
     </header>
   );
 }

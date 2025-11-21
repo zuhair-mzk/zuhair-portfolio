@@ -22,8 +22,8 @@ export default function Home() {
         <div className="container-main grid gap-10 sm:gap-16 lg:gap-20 lg:grid-cols-2 items-center">
           {/* Left side - Text content */}
           <div className="order-2 lg:order-1 lg:pl-0">
-            <div className="inline-block rounded-2xl border-2 border-cyan-500/40 bg-cyan-500/10 px-4 sm:px-5 py-1.5 sm:py-2 mb-3 sm:mb-4">
-              <p className="text-sm sm:text-base font-semibold text-cyan-300">
+            <div className="inline-block rounded-2xl border-2 border-cyan-500/40 bg-cyan-500/10 px-3 sm:px-5 py-1 sm:py-2 mb-3 sm:mb-4">
+              <p className="text-xs sm:text-base font-semibold text-cyan-300">
                 Hello, I&apos;m
               </p>
             </div>
@@ -148,49 +148,102 @@ export default function Home() {
         <div className="container-main">
           <p className="section-label mb-2 sm:mb-3 text-xs sm:text-sm">Experience</p>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">Domains I'm Actively Building In</h2>
-          <p className="text-base sm:text-lg lg:text-xl text-slate-400 max-w-3xl mb-8 sm:mb-12 leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-xl text-slate-400 max-w-3xl mb-6 sm:mb-12 leading-relaxed">
             A quick snapshot of my main focus areas: quantum computing, cybersecurity,
             software engineering, startups, and community work.
           </p>
 
-          <div className="grid gap-4 sm:gap-5 md:grid-cols-3">
-            <PillarCard
-              title="Quantum Computing"
-              body="Researching quantum-safe security, comparing PQC and QKD protocols, and exploring photonic quantum machine learning."
-              meta="Active research with Prof. Marcelo Ponce (Best Poster – CMS 2025), PennyLane Codebook completion, PhotonQML hackathon (3rd place), Qiskit Summer School Excellence Award, Q-SITE 2025, IBM Quantum certification."
-              tags={[
-                "PQC vs QKD Research",
-                "PennyLane · Qiskit",
-                "Photonic QML",
-              ]}
-            />
-            <PillarCard
-              title="Cybersecurity & Networks"
-              body="End-to-end systems: from OS kernels and concurrent tools to full-stack products and production web apps."
-              meta="Building IDS from scratch, 15+ CTF challenges (crypto, reverse engineering, packet analysis), CSCD58 network labs (Mininet, SDN, POX), Google Cybersecurity Certificate, secure authentication for Offline app (JWT, bcrypt)."
-              tags={["IDS/NIDS", "CTFs", "Network Security", "Secure Auth"]}
-            />
-            <PillarCard
-              title="Software Engineering"
-              body="End-to-end systems: from OS kernels and concurrent tools to full-stack products and production web apps."
-              meta="StockSocial (FastAPI, PostgreSQL, React Native), Quotis MVP, CMS Connect Android app, Pintos kernel threads, MIPS interpreter, System Monitor (C++/ncurses), MSA UTSC website."
-              tags={["Full-Stack", "C/C++/Assembly", "React · Next.js", "Databases"]}
-            />
+          {/* Mobile: Horizontal scrolling cards */}
+          <div className="md:hidden overflow-x-auto -mx-4 px-4 pb-4">
+            <div className="flex gap-4" style={{ width: 'max-content' }}>
+              <div style={{ width: '85vw', maxWidth: '400px' }}>
+                <PillarCard
+                  title="Quantum Computing"
+                  body="Researching quantum-safe security, comparing PQC and QKD protocols, and exploring photonic quantum machine learning."
+                  meta="Active research with Prof. Marcelo Ponce (Best Poster – CMS 2025), PennyLane Codebook completion, PhotonQML hackathon (3rd place), Qiskit Summer School Excellence Award, Q-SITE 2025, IBM Quantum certification."
+                  tags={[
+                    "PQC vs QKD Research",
+                    "PennyLane · Qiskit",
+                    "Photonic QML",
+                  ]}
+                />
+              </div>
+              <div style={{ width: '85vw', maxWidth: '400px' }}>
+                <PillarCard
+                  title="Cybersecurity & Networks"
+                  body="End-to-end systems: from OS kernels and concurrent tools to full-stack products and production web apps."
+                  meta="Building IDS from scratch, 15+ CTF challenges (crypto, reverse engineering, packet analysis), CSCD58 network labs (Mininet, SDN, POX), Google Cybersecurity Certificate, secure authentication for Offline app (JWT, bcrypt)."
+                  tags={["IDS/NIDS", "CTFs", "Network Security", "Secure Auth"]}
+                />
+              </div>
+              <div style={{ width: '85vw', maxWidth: '400px' }}>
+                <PillarCard
+                  title="Software Engineering"
+                  body="End-to-end systems: from OS kernels and concurrent tools to full-stack products and production web apps."
+                  meta="StockSocial (FastAPI, PostgreSQL, React Native), Quotis MVP, CMS Connect Android app, Pintos kernel threads, MIPS interpreter, System Monitor (C++/ncurses), MSA UTSC website."
+                  tags={["Full-Stack", "C/C++/Assembly", "React · Next.js", "Databases"]}
+                />
+              </div>
+              <div style={{ width: '85vw', maxWidth: '400px' }}>
+                <PillarCard
+                  title="Startups & Entrepreneurship"
+                  body="Building products from idea to launch, managing teams, and navigating fundraising and early-stage growth."
+                  meta="KZ Collections founder (65% conversion increase, Shopify customizations), Quotis co-founder (Scrum Master, $4K grants), Offline intern (React Native security contributions, pre-seed funded)."
+                  tags={["Technical Leadership", "Fundraising", "Product Growth"]}
+                />
+              </div>
+              <div style={{ width: '85vw', maxWidth: '400px' }}>
+                <PillarCard
+                  title="Community & Leadership"
+                  body="Building strong student communities, organizing large-scale events, and mentoring through sports and tech initiatives."
+                  meta="UTSC MSA webmaster (100+ iftar attendees, React/Node.js/MongoDB), PMCC camp coordinator (3-day multi-sport tournament), Q-SITE VP of Partnerships (200+ attendees, IBM/Xanadu sponsors), Omar Fund & TCF volunteer."
+                  tags={["Event Management", "Web Development", "Volunteering"]}
+                />
+              </div>
+            </div>
           </div>
 
-          <div className="mt-5 grid gap-5 md:grid-cols-2">
-            <PillarCard
-              title="Startups & Entrepreneurship"
-              body="Building products from idea to launch, managing teams, and navigating fundraising and early-stage growth."
-              meta="KZ Collections founder (65% conversion increase, Shopify customizations), Quotis co-founder (Scrum Master, $4K grants), Offline intern (React Native security contributions, pre-seed funded)."
-              tags={["Technical Leadership", "Fundraising", "Product Growth"]}
-            />
-            <PillarCard
-              title="Community & Leadership"
-              body="Building strong student communities, organizing large-scale events, and mentoring through sports and tech initiatives."
-              meta="UTSC MSA webmaster (100+ iftar attendees, React/Node.js/MongoDB), PMCC camp coordinator (3-day multi-sport tournament), Q-SITE VP of Partnerships (200+ attendees, IBM/Xanadu sponsors), Omar Fund & TCF volunteer."
-              tags={["Event Management", "Web Development", "Volunteering"]}
-            />
+          {/* Desktop: Grid layout */}
+          <div className="hidden md:block">
+            <div className="grid gap-4 sm:gap-5 md:grid-cols-3">
+              <PillarCard
+                title="Quantum Computing"
+                body="Researching quantum-safe security, comparing PQC and QKD protocols, and exploring photonic quantum machine learning."
+                meta="Active research with Prof. Marcelo Ponce (Best Poster – CMS 2025), PennyLane Codebook completion, PhotonQML hackathon (3rd place), Qiskit Summer School Excellence Award, Q-SITE 2025, IBM Quantum certification."
+                tags={[
+                  "PQC vs QKD Research",
+                  "PennyLane · Qiskit",
+                  "Photonic QML",
+                ]}
+              />
+              <PillarCard
+                title="Cybersecurity & Networks"
+                body="End-to-end systems: from OS kernels and concurrent tools to full-stack products and production web apps."
+                meta="Building IDS from scratch, 15+ CTF challenges (crypto, reverse engineering, packet analysis), CSCD58 network labs (Mininet, SDN, POX), Google Cybersecurity Certificate, secure authentication for Offline app (JWT, bcrypt)."
+                tags={["IDS/NIDS", "CTFs", "Network Security", "Secure Auth"]}
+              />
+              <PillarCard
+                title="Software Engineering"
+                body="End-to-end systems: from OS kernels and concurrent tools to full-stack products and production web apps."
+                meta="StockSocial (FastAPI, PostgreSQL, React Native), Quotis MVP, CMS Connect Android app, Pintos kernel threads, MIPS interpreter, System Monitor (C++/ncurses), MSA UTSC website."
+                tags={["Full-Stack", "C/C++/Assembly", "React · Next.js", "Databases"]}
+              />
+            </div>
+
+            <div className="mt-5 grid gap-5 md:grid-cols-2">
+              <PillarCard
+                title="Startups & Entrepreneurship"
+                body="Building products from idea to launch, managing teams, and navigating fundraising and early-stage growth."
+                meta="KZ Collections founder (65% conversion increase, Shopify customizations), Quotis co-founder (Scrum Master, $4K grants), Offline intern (React Native security contributions, pre-seed funded)."
+                tags={["Technical Leadership", "Fundraising", "Product Growth"]}
+              />
+              <PillarCard
+                title="Community & Leadership"
+                body="Building strong student communities, organizing large-scale events, and mentoring through sports and tech initiatives."
+                meta="UTSC MSA webmaster (100+ iftar attendees, React/Node.js/MongoDB), PMCC camp coordinator (3-day multi-sport tournament), Q-SITE VP of Partnerships (200+ attendees, IBM/Xanadu sponsors), Omar Fund & TCF volunteer."
+                tags={["Event Management", "Web Development", "Volunteering"]}
+              />
+            </div>
           </div>
         </div>
       </section>

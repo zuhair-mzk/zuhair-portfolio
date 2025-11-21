@@ -291,12 +291,12 @@ export default function ProjectsTabs() {
   return (
     <div>
       {/* Tab buttons */}
-      <div className="mb-8 flex flex-wrap gap-3">
+      <div className="mb-6 sm:mb-8 flex flex-wrap gap-2 sm:gap-3">
         {(Object.keys(projectsData) as ProjectCategory[]).map((category) => (
           <button
             key={category}
             onClick={() => setActiveTab(category)}
-            className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
+            className={`rounded-full px-3 sm:px-5 py-1.5 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all ${
               activeTab === category
                 ? "bg-cyan-400/20 text-cyan-300 border-2 border-cyan-400/50"
                 : "bg-slate-800/50 text-slate-400 border-2 border-slate-700/50 hover:border-cyan-400/30 hover:text-cyan-400"
@@ -308,7 +308,7 @@ export default function ProjectsTabs() {
       </div>
 
       {/* Project Cards Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projectsData[activeTab].map((project, index) => {
           const isExpanded = expandedCards.has(index);
           const hasExtendedContent = !!project.bodyExtended;
@@ -316,33 +316,33 @@ export default function ProjectsTabs() {
           return (
             <article
               key={index}
-              className="card p-6 sm:p-7 hover:border-cyan-400/30 transition-all opacity-0 animate-fadeIn flex flex-col"
+              className="card p-4 sm:p-6 hover:border-cyan-400/30 transition-all opacity-0 animate-fadeIn flex flex-col"
               style={{ animationDelay: `${index * 50}ms` }}
             >
               {project.timeline && (
-                <p className="text-xs text-cyan-400 font-semibold mb-2 uppercase tracking-wide">
+                <p className="text-[10px] sm:text-xs text-cyan-400 font-semibold mb-2 uppercase tracking-wide">
                   {project.timeline}
               </p>
             )}
-              <h3 className="text-xl font-bold mb-3">{project.title}</h3>
+              <h3 className="text-base sm:text-xl font-bold mb-2 sm:mb-3">{project.title}</h3>
               
               <div className="grow">
-                <p className={`text-base text-slate-300 mb-3 leading-relaxed ${!isExpanded && hasExtendedContent ? 'line-clamp-4' : ''}`}>
+                <p className={`text-sm sm:text-base text-slate-300 mb-2 sm:mb-3 leading-relaxed ${!isExpanded && hasExtendedContent ? 'line-clamp-3' : ''}`}>
                   {isExpanded && project.bodyExtended ? project.bodyExtended : project.body}
                 </p>
                                 {hasExtendedContent && (
                   <button
                     onClick={() => toggleCard(index)}
-                    className="text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors mb-3"
+                    className="text-xs sm:text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors mb-2 sm:mb-3"
                   >
                     {isExpanded ? 'Show Less ↑' : 'Read More ↓'}
                   </button>
                 )}
                 
-                <p className="text-sm text-slate-400 mb-4">{project.meta}</p>
+                <p className="text-xs sm:text-sm text-slate-400 mb-3 sm:mb-4 line-clamp-2">{project.meta}</p>
               </div>
               
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                 {project.tags.map((tag) => (
                   <span key={tag} className="tag text-xs px-3 py-1">
                     {tag}
