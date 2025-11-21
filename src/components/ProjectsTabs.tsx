@@ -307,8 +307,78 @@ export default function ProjectsTabs() {
         ))}
       </div>
 
-      {/* Project Cards Grid */}
-      <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {/* Mobile: Horizontal scrolling */}
+      <div className="md:hidden overflow-x-auto -mx-4 px-4 pb-4">
+        <div className="flex gap-4" style={{ width: 'max-content' }}>
+          {projectsData[activeTab].map((project, index) => {
+            const isExpanded = expandedCards.has(index);
+            const hasExtendedContent = !!project.bodyExtended;
+            
+            return (
+              <article
+                key={index}
+                className="card p-4 hover:border-cyan-400/30 transition-all opacity-0 animate-fadeIn flex flex-col"
+                style={{ 
+                  animationDelay: `${index * 50}ms`,
+                  width: '85vw',
+                  maxWidth: '400px',
+                  minHeight: '400px'
+                }}
+              >
+                {project.timeline && (
+                  <p className="text-[10px] text-cyan-400 font-semibold mb-2 uppercase tracking-wide">
+                    {project.timeline}
+                  </p>
+                )}
+                <h3 className="text-base font-bold mb-2">{project.title}</h3>
+                
+                <div className="grow">
+                  <p className={`text-sm text-slate-300 mb-2 leading-relaxed ${!isExpanded && hasExtendedContent ? 'line-clamp-3' : ''}`}>
+                    {isExpanded && project.bodyExtended ? project.bodyExtended : project.body}
+                  </p>
+                  {hasExtendedContent && (
+                    <button
+                      onClick={() => toggleCard(index)}
+                      className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors mb-2"
+                    >
+                      {isExpanded ? 'Show Less ↑' : 'Read More ↓'}
+                    </button>
+                  )}
+                  
+                  <p className="text-xs text-slate-400 mb-3 line-clamp-2">{project.meta}</p>
+                </div>
+                
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="tag text-[10px] px-2 py-0.5">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                
+                {project.links && project.links.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center text-[10px] font-semibold text-cyan-400 hover:text-cyan-300 transition-colors border border-cyan-500/30 hover:border-cyan-400/50 rounded-lg px-2 py-1"
+                      >
+                        {link.label} →
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Desktop: Grid layout */}
+      <div className="hidden md:grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projectsData[activeTab].map((project, index) => {
           const isExpanded = expandedCards.has(index);
           const hasExtendedContent = !!project.bodyExtended;
@@ -316,33 +386,33 @@ export default function ProjectsTabs() {
           return (
             <article
               key={index}
-              className="card p-4 sm:p-6 hover:border-cyan-400/30 transition-all opacity-0 animate-fadeIn flex flex-col"
+              className="card p-6 hover:border-cyan-400/30 transition-all opacity-0 animate-fadeIn flex flex-col"
               style={{ animationDelay: `${index * 50}ms` }}
             >
               {project.timeline && (
-                <p className="text-[10px] sm:text-xs text-cyan-400 font-semibold mb-2 uppercase tracking-wide">
+                <p className="text-xs text-cyan-400 font-semibold mb-2 uppercase tracking-wide">
                   {project.timeline}
               </p>
             )}
-              <h3 className="text-base sm:text-xl font-bold mb-2 sm:mb-3">{project.title}</h3>
+              <h3 className="text-xl font-bold mb-3">{project.title}</h3>
               
               <div className="grow">
-                <p className={`text-sm sm:text-base text-slate-300 mb-2 sm:mb-3 leading-relaxed ${!isExpanded && hasExtendedContent ? 'line-clamp-3' : ''}`}>
+                <p className={`text-base text-slate-300 mb-3 leading-relaxed ${!isExpanded && hasExtendedContent ? 'line-clamp-3' : ''}`}>
                   {isExpanded && project.bodyExtended ? project.bodyExtended : project.body}
                 </p>
-                                {hasExtendedContent && (
+                {hasExtendedContent && (
                   <button
                     onClick={() => toggleCard(index)}
-                    className="text-xs sm:text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors mb-2 sm:mb-3"
+                    className="text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors mb-3"
                   >
                     {isExpanded ? 'Show Less ↑' : 'Read More ↓'}
                   </button>
                 )}
                 
-                <p className="text-xs sm:text-sm text-slate-400 mb-3 sm:mb-4 line-clamp-2">{project.meta}</p>
+                <p className="text-sm text-slate-400 mb-4 line-clamp-2">{project.meta}</p>
               </div>
               
-              <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
                   <span key={tag} className="tag text-xs px-3 py-1">
                     {tag}

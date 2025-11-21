@@ -349,10 +349,10 @@ function PillarCard({
   tags: string[];
 }) {
   return (
-    <article className="card p-6 sm:p-7 hover:border-cyan-400/30 transition-all">
+    <article className="card p-6 sm:p-7 hover:border-cyan-400/30 transition-all h-full flex flex-col">
       <h3 className="text-xl font-bold mb-3">{title}</h3>
       <p className="text-base text-slate-300 mb-3 leading-relaxed">{body}</p>
-      <p className="text-sm text-slate-400 mb-4">{meta}</p>
+      <p className="text-sm text-slate-400 mb-4 flex-grow">{meta}</p>
       <div className="flex flex-wrap gap-2">
         {tags.map((t) => (
           <span key={t} className="tag text-xs px-3 py-1">
