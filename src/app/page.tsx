@@ -19,44 +19,32 @@ export default function Home() {
 
       {/* Hero */}
       <section className="section pt-8 sm:pt-20 pb-8 sm:pb-16">
-        {/* Mobile Layout - Stacked with compact spacing */}
+        {/* Mobile Layout - Clean, text-focused */}
         <div className="container-main lg:hidden">
-          {/* Text content - centered on mobile */}
-          <div className="text-center mb-6">
+          <div className="text-center">
             <div className="inline-block rounded-2xl border-2 border-cyan-500/40 bg-cyan-500/10 px-3 py-1 mb-3">
               <p className="text-xs font-semibold text-cyan-300">
                 Hello, I&apos;m
               </p>
             </div>
-            <h1 className="text-3xl font-bold leading-tight mb-2">
+            <h1 className="text-4xl font-bold leading-tight mb-2">
               Zuhair Khan
             </h1>
-            <div className="text-lg text-slate-300 mb-4 min-h-8">
+            <div className="text-xl text-slate-300 mb-5 min-h-8">
               And I&apos;m a <TypewriterText />
             </div>
-          </div>
-
-          {/* Image carousel - after title on mobile */}
-          <div className="flex justify-center mb-6">
-            <div className="w-48 h-48">
-              <ImageCarousel />
-            </div>
-          </div>
-
-          {/* Rest of content */}
-          <div className="text-center">
-            <p className="text-sm text-slate-400 mb-4 leading-relaxed px-2">
+            <p className="text-sm text-slate-400 mb-5 leading-relaxed px-2">
               Passionate about quantum computing, post-quantum cryptography, and secure software systems. 
               Currently researching security architectures at the University of Toronto.
             </p>
             
-            <div className="mb-4 flex flex-wrap gap-2 justify-center">
+            <div className="mb-5 flex flex-wrap gap-2 justify-center">
               <span className="chip text-xs px-2.5 py-1">PQC × QKD</span>
               <span className="chip text-xs px-2.5 py-1">Quantum ML</span>
               <span className="chip text-xs px-2.5 py-1">Full-Stack Dev</span>
             </div>
 
-            <div className="flex flex-wrap gap-2 justify-center mb-4">
+            <div className="flex flex-wrap gap-2 justify-center mb-5">
               <Link
                 href="#projects"
                 className="inline-flex items-center rounded-full bg-linear-to-r from-cyan-400 to-emerald-400 px-5 py-2.5 text-xs font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110 transition-all"
