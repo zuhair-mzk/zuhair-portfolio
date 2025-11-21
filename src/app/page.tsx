@@ -38,7 +38,7 @@ export default function Home() {
 
           {/* Image carousel - after title on mobile */}
           <div className="flex justify-center mb-6">
-            <div className="w-64 h-64">
+            <div className="w-48 h-48">
               <ImageCarousel />
             </div>
           </div>
