@@ -22,50 +22,50 @@ export default function Home() {
         {/* Mobile Layout - Clean, text-focused */}
         <div className="container-main lg:hidden">
           <div className="text-center">
-            <div className="inline-block rounded-2xl border-2 border-cyan-500/40 bg-cyan-500/10 px-3 py-1 mb-3">
-              <p className="text-xs font-semibold text-cyan-300">
+            <div className="inline-block rounded-2xl border-2 border-cyan-500/40 bg-cyan-500/10 px-4 py-1.5 mb-4">
+              <p className="text-sm font-semibold text-cyan-300">
                 Hello, I&apos;m
               </p>
             </div>
-            <h1 className="text-4xl font-bold leading-tight mb-2">
+            <h1 className="text-5xl font-bold leading-tight mb-4">
               Zuhair Khan
             </h1>
-            <div className="text-xl text-slate-300 mb-5 min-h-8">
+            <div className="text-2xl text-slate-300 mb-6 min-h-10">
               And I&apos;m a <TypewriterText />
             </div>
-            <p className="text-sm text-slate-400 mb-5 leading-relaxed px-2">
+            <p className="text-base text-slate-400 mb-8 leading-relaxed px-4">
               Passionate about quantum computing, post-quantum cryptography, and secure software systems. 
               Currently researching security architectures at the University of Toronto.
             </p>
             
-            <div className="mb-5 flex flex-wrap gap-2 justify-center">
-              <span className="chip text-xs px-2.5 py-1">PQC × QKD</span>
-              <span className="chip text-xs px-2.5 py-1">Quantum ML</span>
-              <span className="chip text-xs px-2.5 py-1">Full-Stack Dev</span>
+            <div className="mb-8 flex flex-wrap gap-2 justify-center">
+              <span className="chip text-sm px-3 py-1.5">PQC × QKD</span>
+              <span className="chip text-sm px-3 py-1.5">Quantum ML</span>
+              <span className="chip text-sm px-3 py-1.5">Full-Stack Dev</span>
             </div>
 
-            <div className="flex flex-wrap gap-2 justify-center mb-5">
+            <div className="flex flex-wrap gap-3 justify-center mb-8">
               <Link
                 href="#projects"
-                className="inline-flex items-center rounded-full bg-linear-to-r from-cyan-400 to-emerald-400 px-5 py-2.5 text-xs font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110 transition-all"
+                className="inline-flex items-center rounded-full bg-linear-to-r from-cyan-400 to-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110 transition-all"
               >
                 View Projects →
               </Link>
               <Link
                 href={cvLink}
-                className="inline-flex items-center rounded-full border-2 border-cyan-500/50 bg-slate-950/50 px-4 py-2.5 text-xs font-semibold text-cyan-100 hover:border-cyan-300 transition-all"
+                className="inline-flex items-center rounded-full border-2 border-cyan-500/50 bg-slate-950/50 px-5 py-3 text-sm font-semibold text-cyan-100 hover:border-cyan-300 transition-all"
               >
                 Download CV
               </Link>
             </div>
 
             {/* Social links */}
-            <div className="flex gap-3 justify-center">
+            <div className="flex gap-4 justify-center">
               <a
                 href={github}
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border-2 border-slate-600/70 flex items-center justify-center hover:border-cyan-400 hover:bg-cyan-400/10 transition-all hover:scale-110"
+                className="w-11 h-11 rounded-full border-2 border-slate-600/70 flex items-center justify-center hover:border-cyan-400 hover:bg-cyan-400/10 transition-all hover:scale-110"
                 aria-label="GitHub"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -76,7 +76,7 @@ export default function Home() {
                 href={linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border-2 border-slate-600/70 flex items-center justify-center hover:border-cyan-400 hover:bg-cyan-400/10 transition-all hover:scale-110"
+                className="w-11 h-11 rounded-full border-2 border-slate-600/70 flex items-center justify-center hover:border-cyan-400 hover:bg-cyan-400/10 transition-all hover:scale-110"
                 aria-label="LinkedIn"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -85,7 +85,7 @@ export default function Home() {
               </a>
               <a
                 href={`mailto:${email}`}
-                className="w-10 h-10 rounded-full border-2 border-slate-600/70 flex items-center justify-center hover:border-cyan-400 hover:bg-cyan-400/10 transition-all hover:scale-110"
+                className="w-11 h-11 rounded-full border-2 border-slate-600/70 flex items-center justify-center hover:border-cyan-400 hover:bg-cyan-400/10 transition-all hover:scale-110"
                 aria-label="Email"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
