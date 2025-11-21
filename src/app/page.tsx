@@ -21,15 +21,8 @@ export default function Home() {
       <section className="section pt-8 sm:pt-20 pb-8 sm:pb-16">
         {/* Mobile Layout - Stacked with compact spacing */}
         <div className="container-main lg:hidden">
-          {/* Image carousel - top on mobile */}
-          <div className="flex justify-center mb-6">
-            <div className="w-64 h-64">
-              <ImageCarousel />
-            </div>
-          </div>
-
           {/* Text content - centered on mobile */}
-          <div className="text-center">
+          <div className="text-center mb-6">
             <div className="inline-block rounded-2xl border-2 border-cyan-500/40 bg-cyan-500/10 px-3 py-1 mb-3">
               <p className="text-xs font-semibold text-cyan-300">
                 Hello, I&apos;m
@@ -41,6 +34,17 @@ export default function Home() {
             <div className="text-lg text-slate-300 mb-4 min-h-8">
               And I&apos;m a <TypewriterText />
             </div>
+          </div>
+
+          {/* Image carousel - after title on mobile */}
+          <div className="flex justify-center mb-6">
+            <div className="w-64 h-64">
+              <ImageCarousel />
+            </div>
+          </div>
+
+          {/* Rest of content */}
+          <div className="text-center">
             <p className="text-sm text-slate-400 mb-4 leading-relaxed px-2">
               Passionate about quantum computing, post-quantum cryptography, and secure software systems. 
               Currently researching security architectures at the University of Toronto.
