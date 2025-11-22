@@ -19,11 +19,11 @@ const projectsData: Record<ProjectCategory, Project[]> = {
     {
       title: "Quantum Computing Course – UofT",
       body: "Completed Introduction to Quantum Computing under Prof. Marcelo Ponce. Delivered research presentation on PQC & QKD exploring their complementary roles in hybrid security.",
-      bodyExtended: "Comprehensive course covering the mathematical foundations of quantum computing, including linear algebra in Hilbert spaces, quantum state evolution, and measurement theory. Topics included quantum tunneling, Bell inequalities, quantum entanglement, and cryptographic applications. Final research presentation explored how Post-Quantum Cryptography and Quantum Key Distribution address different threat vectors in the quantum era, proposing hybrid architectures that leverage both technologies. The course provided rigorous theoretical grounding while connecting abstract concepts to real-world applications in security, optimization, and simulation.",
-      meta: "Topics: Linear algebra, quantum mechanics, tunneling, Bell inequalities, cryptographic applications",
+      bodyExtended: "Comprehensive course covering the mathematical foundations of quantum computing, including linear algebra in Hilbert spaces, quantum state evolution, and measurement theory. Topics included quantum tunneling, Bell inequalities, quantum entanglement, and cryptographic applications. Hands-on experience with Xanadu Codebook workshop using PennyLane for quantum programming. Completed three rigorous assignments covering quantum mechanics foundations (density matrices, tensor products, eigenvalue problems), quantum gates & circuits (Hadamard, CNOT, Bell states), and quantum algorithms (Deutsch-Jozsa, Grover's algorithm, quantum Fourier transform). Final research presentation explored how Post-Quantum Cryptography and Quantum Key Distribution address different threat vectors in the quantum era, analyzing NIST PQC standards (Kyber, Dilithium), lattice-based methods (LWE, Ring-LWE), and QKD protocols (BB84, E91), proposing hybrid architectures that leverage both technologies. The course provided rigorous theoretical grounding while connecting abstract concepts to real-world applications in security, optimization, and simulation.",
+      meta: "Topics: Linear algebra, quantum mechanics, tunneling, Bell inequalities, Shor's algorithm, PQC families, QKD protocols",
       tags: ["QC Theory", "PQC", "QKD"],
       links: [
-        { label: "Course Site", url: "https://cmsweb.utsc.utoronto.ca/marcelo-ponce/teaching/d94--qc/index.html" },
+        { label: "GitHub", url: "https://github.com/zuhair-mzk/intro_to_quantum_computing" },
         { label: "Presentation", url: "https://drive.google.com/drive/folders/179TPIacUaYcYeV8Jj4zznRIGlUpDnQD3?usp=sharing" }
       ],
       timeline: "Summer 2025",
@@ -100,11 +100,14 @@ const projectsData: Record<ProjectCategory, Project[]> = {
   ],
   "Cybersecurity & Networking": [
     {
-      title: "Network Engineering Labs (CSCD58)",
-      body: "Completed four comprehensive network labs covering protocols, performance analysis, SDN, and application layer technologies.",
-      bodyExtended: "Hands-on lab series exploring network fundamentals through practical experimentation. Lab 1 (Mininet & Wireshark): Built virtual network topologies using Mininet, analyzed ICMP, ARP, and Ethernet frames in Wireshark to understand protocol behavior and packet structure. Lab 2 (VLANs & Performance): Configured VLANs for network segmentation, measured bandwidth and RTT under varying conditions using iperf and ping, implemented traffic shaping with TC (traffic control) to simulate realistic network constraints. Lab 3 (Application Layer): Deployed Python HTTP server in Mininet, tested client-server communication with wget, logged and analyzed HTTP request/response patterns. Lab 4 (SDN with POX): Implemented controller-based routing using POX and OpenFlow, wrote Python logic for packet forwarding decisions, debugged flows and controller events in real time. The labs provided deep understanding of networking stack from link layer to application layer, combining theoretical knowledge with practical troubleshooting skills.",
-      meta: "Mininet, Wireshark, VLANs, iperf, TC traffic shaping, POX controller, OpenFlow, HTTP servers",
-      tags: ["Mininet", "Wireshark", "SDN", "POX", "VLANs", "Network Performance"],
+      title: "Network Engineering Labs & Simple Router (CSCD58)",
+      body: "Completed comprehensive network engineering labs covering protocols, SDN, and performance analysis. Built a production-quality software router (2000+ LOC in C) implementing IPv4 forwarding, ARP cache, and ICMP protocols with 100% test pass rate.",
+      bodyExtended: "Hands-on lab series and major router implementation project exploring network fundamentals. Labs covered: (1) Mininet & Wireshark - Built virtual network topologies, analyzed ICMP, ARP, and Ethernet frames to understand protocol behavior. (2) VLANs & Performance - Configured network segmentation, measured bandwidth/RTT using iperf, implemented traffic shaping with TC. (3) Application Layer - Deployed Python HTTP server, analyzed client-server communication patterns. (4) SDN with POX - Implemented controller-based routing using OpenFlow. Major capstone project: Built a complete software router from scratch in C (2000+ lines) with team partner. Implemented RFC-compliant IPv4 forwarding engine with Longest Prefix Match routing, thread-safe ARP cache with automatic timeout/retry logic, and full ICMP protocol stack (Echo Reply, Time Exceeded, Destination Unreachable). Achieved 100% test pass rate across 8 comprehensive test scenarios including ping, traceroute, HTTP forwarding, and stress tests. The router handled real network traffic in Mininet with POX controller, demonstrating production-quality systems programming with zero compilation warnings and memory leaks. This project required deep understanding of binary protocol parsing, concurrent data structures, and RFC specifications (791, 792, 826).",
+      meta: "Software router: 2000+ LOC C, IPv4/ARP/ICMP implementation, 100% test pass rate · Labs: Mininet, Wireshark, VLANs, iperf, TC, POX, OpenFlow",
+      tags: ["C", "Systems Programming", "Mininet", "Wireshark", "SDN", "POX", "Networking Protocols"],
+      links: [
+        { label: "GitHub", url: "https://github.com/zuhair-mzk/Computer_Networking" }
+      ],
       timeline: "Fall 2025",
     },
     {
