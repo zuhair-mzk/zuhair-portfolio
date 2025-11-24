@@ -1,8 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type ProjectCategory = "Quantum Computing" | "Cybersecurity & Networking" | "Software Engineering" | "Leadership & Community";
+
+const categoryToHash: Record<ProjectCategory, string> = {
+  "Quantum Computing": "quantum",
+  "Cybersecurity & Networking": "cybersecurity",
+  "Software Engineering": "software",
+  "Leadership & Community": "leadership",
+};
+
+const hashToCategory: Record<string, ProjectCategory> = {
+  quantum: "Quantum Computing",
+  cybersecurity: "Cybersecurity & Networking",
+  software: "Software Engineering",
+  leadership: "Leadership & Community",
+};
 
 interface Project {
   title: string;
@@ -281,6 +295,30 @@ export default function ProjectsTabs() {
   const [activeTab, setActiveTab] = useState<ProjectCategory>("Quantum Computing");
   const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
 
+  // Handle URL hash on mount and hash changes
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      const category = hashToCategory[hash];
+      if (category) {
+        setActiveTab(category);
+      }
+    };
+
+    // Check hash on mount
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const handleTabChange = (category: ProjectCategory) => {
+    setActiveTab(category);
+    // Update URL hash without scrolling
+    window.history.pushState(null, "", `#${categoryToHash[category]}`);
+  };
+
   const toggleCard = (index: number) => {
     const newExpanded = new Set(expandedCards);
     if (newExpanded.has(index)) {
@@ -298,7 +336,7 @@ export default function ProjectsTabs() {
         {(Object.keys(projectsData) as ProjectCategory[]).map((category) => (
           <button
             key={category}
-            onClick={() => setActiveTab(category)}
+            onClick={() => handleTabChange(category)}
             className={`rounded-full px-3 sm:px-5 py-1.5 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all ${
               activeTab === category
                 ? "bg-cyan-400/20 text-cyan-300 border-2 border-cyan-400/50"
