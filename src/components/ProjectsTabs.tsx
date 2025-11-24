@@ -299,7 +299,27 @@ export default function ProjectsTabs() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace("#", "");
-      const category = hashToCategory[hash];
+      
+      // Support both formats: #cybersecurity and #projects-cybersecurity
+      let category: ProjectCategory | undefined;
+      
+      if (hash.startsWith("projects-")) {
+        // Format: #projects-cybersecurity
+        const categoryHash = hash.replace("projects-", "");
+        category = hashToCategory[categoryHash];
+        
+        // Scroll to projects section
+        const projectsSection = document.getElementById("projects");
+        if (projectsSection) {
+          setTimeout(() => {
+            projectsSection.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+        }
+      } else {
+        // Format: #cybersecurity
+        category = hashToCategory[hash];
+      }
+      
       if (category) {
         setActiveTab(category);
       }
@@ -316,7 +336,7 @@ export default function ProjectsTabs() {
   const handleTabChange = (category: ProjectCategory) => {
     setActiveTab(category);
     // Update URL hash without scrolling
-    window.history.pushState(null, "", `#${categoryToHash[category]}`);
+    window.history.pushState(null, "", `#projects-${categoryToHash[category]}`);
   };
 
   const toggleCard = (index: number) => {
