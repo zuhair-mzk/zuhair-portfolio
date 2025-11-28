@@ -57,7 +57,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-3 justify-center mb-8">
               <Link
                 href="#projects"
-                className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110 transition-all"
+                className="inline-flex items-center rounded-full bg-linear-to-r from-cyan-400 to-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110 transition-all"
               >
                 View Projects →
               </Link>
@@ -137,7 +137,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-3 mb-6">
               <Link
                 href="#projects"
-                className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110 transition-all"
+                className="inline-flex items-center rounded-full bg-linear-to-r from-cyan-400 to-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110 transition-all"
               >
                 View Projects →
               </Link>
@@ -389,7 +389,7 @@ export default function Home() {
           <div className="flex flex-wrap gap-4">
             <a
               href={`mailto:${email}`}
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 px-5 py-2.5 text-xs font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110"
+              className="inline-flex items-center rounded-full bg-linear-to-r from-cyan-400 to-emerald-400 px-5 py-2.5 text-xs font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110"
             >
               Email me
             </a>

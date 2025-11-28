@@ -54,7 +54,7 @@ export default function TypewriterText() {
   }, [currentText, isDeleting, currentRoleIndex, isPaused]);
 
   return (
-    <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-emerald-300 bg-clip-text text-transparent font-semibold">
+    <span className="bg-linear-to-r from-cyan-400 via-sky-300 to-emerald-300 bg-clip-text text-transparent font-semibold">
       {currentText}
       <span className="animate-pulse">|</span>
     </span>

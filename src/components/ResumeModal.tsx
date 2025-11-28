@@ -66,7 +66,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
       {/* Modal */}
       <div
-        className={`relative w-full max-w-lg bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl border-2 border-cyan-500/30 shadow-[0_0_50px_rgba(34,211,238,0.3)] p-6 sm:p-8 transition-all duration-300 max-h-[90vh] overflow-y-auto ${
+        className={`relative w-full max-w-lg bg-linear-to-br from-slate-900 to-slate-950 rounded-2xl border-2 border-cyan-500/30 shadow-[0_0_50px_rgba(34,211,238,0.3)] p-6 sm:p-8 transition-all duration-300 max-h-[90vh] overflow-y-auto ${
           isOpen ? "scale-100 translate-y-0" : "scale-95 translate-y-4"
         }`}
         onClick={(e) => e.stopPropagation()}
