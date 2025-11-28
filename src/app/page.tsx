@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import ImageCarousel from "@/components/ImageCarousel";
@@ -5,17 +8,24 @@ import TypewriterText from "@/components/TypewriterText";
 import SkillsTabs from "@/components/SkillsTabs";
 import AboutSection from "@/components/AboutSection";
 import ProjectsTabs from "@/components/ProjectsTabs";
+import ResumeModal from "@/components/ResumeModal";
 
 const email = "zuhair.khan@mail.utoronto.ca";
 const github = "https://github.com/zuhair-mzk";
 const linkedin = "https://www.linkedin.com/in/zuhair-khan-3aab98373/";
-const cvLink = "/cv.pdf"; // drop a cv.pdf in public/ later
 
 export default function Home() {
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   return (
     <main className="min-h-screen">
       {/* Top nav */}
       <Header />
+
+      {/* Resume Modal */}
+      <ResumeModal 
+        isOpen={isResumeModalOpen} 
+        onClose={() => setIsResumeModalOpen(false)} 
+      />
 
       {/* Hero */}
       <section className="section pt-8 sm:pt-20 pb-8 sm:pb-16">
@@ -47,16 +57,16 @@ export default function Home() {
             <div className="flex flex-wrap gap-3 justify-center mb-8">
               <Link
                 href="#projects"
-                className="inline-flex items-center rounded-full bg-linear-to-r from-cyan-400 to-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110 transition-all"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110 transition-all"
               >
                 View Projects →
               </Link>
-              <Link
-                href={cvLink}
+              <button
+                onClick={() => setIsResumeModalOpen(true)}
                 className="inline-flex items-center rounded-full border-2 border-cyan-500/50 bg-slate-950/50 px-5 py-3 text-sm font-semibold text-cyan-100 hover:border-cyan-300 transition-all"
               >
                 Download CV
-              </Link>
+              </button>
             </div>
 
             {/* Social links */}
@@ -127,16 +137,16 @@ export default function Home() {
             <div className="flex flex-wrap gap-3 mb-6">
               <Link
                 href="#projects"
-                className="inline-flex items-center rounded-full bg-linear-to-r from-cyan-400 to-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110 transition-all"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110 transition-all"
               >
                 View Projects →
               </Link>
-              <Link
-                href={cvLink}
+              <button
+                onClick={() => setIsResumeModalOpen(true)}
                 className="inline-flex items-center rounded-full border-2 border-cyan-500/50 bg-slate-950/50 px-5 py-3 text-sm font-semibold text-cyan-100 hover:border-cyan-300 transition-all"
               >
                 Download CV
-              </Link>
+              </button>
             </div>
 
             {/* Social links */}
@@ -379,7 +389,7 @@ export default function Home() {
           <div className="flex flex-wrap gap-4">
             <a
               href={`mailto:${email}`}
-              className="inline-flex items-center rounded-full bg-linear-to-r from-cyan-400 to-emerald-400 px-5 py-2.5 text-xs font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110"
+              className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 px-5 py-2.5 text-xs font-semibold text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.7)] hover:brightness-110"
             >
               Email me
             </a>
