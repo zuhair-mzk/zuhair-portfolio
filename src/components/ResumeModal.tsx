@@ -2,48 +2,29 @@
 
 import { useState, useEffect } from "react";
 
+import { resumes } from "@/data/resumes";
+
 interface ResumeModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
 export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
-  const [mounted, setMounted] = useState(false);
+  // Stays mounted after the first open so the closing transition can play.
+  // Derived during render rather than in an effect, which would cause a
+  // cascading render on every open.
+  const [hasOpened, setHasOpened] = useState(false);
+  if (isOpen && !hasOpened) setHasOpened(true);
 
   useEffect(() => {
-    if (isOpen) {
-      setMounted(true);
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
 
-  if (!isOpen && !mounted) return null;
+  if (!isOpen && !hasOpened) return null;
 
-  const resumes = [
-    {
-      title: "Software Engineering Resume",
-      description: "Full-stack development & system design",
-      file: "/resume/swe_resume.pdf",
-      icon: "💻",
-    },
-    {
-      title: "Quantum Computing Resume",
-      description: "Quantum algorithms & research",
-      file: "/resume/quantum.pdf",
-      icon: "⚛️",
-    },
-    {
-      title: "Cybersecurity Resume",
-      description: "PQC, cryptography & security",
-      file: "/resume/cyber.pdf",
-      icon: "🔒",
-    },
-  ];
 
   const handleDownload = (file: string) => {
     const link = document.createElement("a");
