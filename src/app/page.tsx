@@ -3,7 +3,8 @@ import Hero from "@/components/Hero";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import AboutSection from "@/components/AboutSection";
 import ProjectsTabs from "@/components/ProjectsTabs";
-import SkillsTabs from "@/components/SkillsTabs";
+import VenturesSection from "@/components/VenturesSection";
+import CertificationsSection from "@/components/CertificationsSection";
 import { site } from "@/data/site";
 
 export default function Home() {
@@ -12,9 +13,6 @@ export default function Home() {
       <Header />
 
       <Hero />
-
-      {/* About */}
-      <AboutSection />
 
       {/* Experience */}
       <section id="experience" className="section">
@@ -32,6 +30,8 @@ export default function Home() {
         </div>
       </section>
 
+      <VenturesSection />
+
       {/* Projects */}
       <section id="projects" className="section">
         <div className="container-main">
@@ -42,34 +42,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills */}
-      <section id="skills" className="section">
-        <div className="container-main">
-          <p className="section-label mb-2 sm:mb-3 text-xs sm:text-sm">Skills</p>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-8 sm:mb-10 lg:mb-12">Tools I reach for most often.</h2>
-          
-          <SkillsTabs />
+      <CertificationsSection />
 
-          {/* Certifications */}
-          <div className="mt-10 sm:mt-12 lg:mt-16">
-            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">Certifications</h3>
-            <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="card p-5 text-center hover:border-cyan-400/30 transition-all">
-                <div className="text-cyan-400 font-bold mb-2">Google Cybersecurity V2</div>
-                <div className="text-sm text-slate-400">Professional Certificate</div>
-              </div>
-              <div className="card p-5 text-center hover:border-cyan-400/30 transition-all">
-                <div className="text-cyan-400 font-bold mb-2">IBM Qiskit Summer School</div>
-                <div className="text-sm text-slate-400">Excellence Award</div>
-              </div>
-              <div className="card p-5 text-center hover:border-cyan-400/30 transition-all">
-                <div className="text-cyan-400 font-bold mb-2">IBM Quantum Developer</div>
-                <div className="text-sm text-slate-400">In Progress</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AboutSection />
 
       {/* Contact */}
       <section id="contact" className="section pt-20 pb-16">
