@@ -36,7 +36,13 @@ export default function Home() {
       <section id="projects" className="section">
         <div className="container-main">
           <p className="section-label mb-2 sm:mb-3 text-xs sm:text-sm">Selected Work</p>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-8 sm:mb-10 lg:mb-12">Projects & Research</h2>
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
+            Projects &amp; research.
+          </h2>
+          <p className="text-sm sm:text-base lg:text-xl text-slate-400 max-w-3xl mb-8 sm:mb-12 leading-relaxed">
+            Security tooling, systems and full-stack software, quantum research,
+            and the community work alongside it.
+          </p>
           
           <ProjectsTabs />
         </div>
