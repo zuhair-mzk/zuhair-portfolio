@@ -8,7 +8,7 @@ export const certifications: Certification[] = [
   {
     name: "Qiskit Global Summer School 2026 — Quantum Fundamentals",
     issuer: "IBM",
-    date: "2026",
+    date: "Aug 2026",
     logo: "/images/certs/ibm.svg",
     links: [
       {
@@ -19,9 +19,10 @@ export const certifications: Certification[] = [
   },
   {
     name: "Introduction to Cybersecurity",
-    issuer: "Cisco",
-    date: "2026",
+    issuer: "Cisco Networking Academy",
+    date: "Jun 2026",
     logo: "/images/certs/cisco.svg",
+    // Credential ID 1148eeea-e5a6-4534-bc16-16b4efdd4bf8
   },
   {
     name: "Qiskit Global Summer School 2025 — Quantum Excellence",

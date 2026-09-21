@@ -148,6 +148,33 @@ Phone is on the resume but is deliberately NOT published on the site (confirmed)
 
 **LinkedIn headline:** CS @ UofT | Cybersecurity: IAM, Security Operations, Cloud | Prev. @ Mohawk Medbuy, University of Toronto Schools | Research @ UofT
 
+**Location:** Toronto, Ontario, Canada. Open to on-site, hybrid, and remote.
+
+**LinkedIn About (verbatim — this is the source for `src/data/about.ts`, keep his voice):**
+> Hi, I'm Zuhair, a final-year Computer Science student at UofT focused on cybersecurity.
+> Most recently, I worked in network and cloud security at Mohawk Medbuy, covering IAM and security operations. Before that, I was at the University of Toronto Schools doing IT and software development, with some SIEM and Suricata alert work along the way.
+> I like building software and systems. I'm currently working on IDRAK, a B2B startup building real-time AI guidance for warehouse operations, and I previously started and launched my own traditional clothing brand, KZ Collections.
+> I'm also into quantum computing. I did a quantum-safe cryptography research project at UofT and took part in IBM's Qiskit Global Summer School 2026.
+> Always happy to connect.
+
+**Research framing (LinkedIn Education):** Undergraduate researcher in Post-Quantum Cryptography (PQC), focusing on lattice-based schemes and the design of quantum-safe security protocols.
+
+**Relevant coursework:** Computer & Network Security · Computer Networks · Operating Systems · Algorithms · Machine Learning · Quantum Computing
+
+**Secondary education (probably not for the site, recorded for completeness):** Raha International School, Gardens Campus — IB Diploma, 2018–2022, final score 41/45. IB Scholar Award. Regional player, Taaleem Titans Basketball (U14–U19). Defy was featured in Khaleej Times — a possible press link for the Defy venture card.
+
+**Languages:** English (native/bilingual), Arabic (professional working), +1 more.
+
+**Credential IDs:** Cisco Introduction to Cybersecurity — 1148eeea-e5a6-4534-bc16-16b4efdd4bf8 (issued Jun 2026). QGSS 2026 issued Aug 2026.
+
+**Richer project detail from LinkedIn (use when rewriting Projects):**
+- *Network IDS*, Nov 2025 – Dec 2025: signature + statistical anomaly detection; detected port scans, SYN floods, ICMP floods, DNS tunneling, ARP spoofing; anomaly detection via Shannon entropy, Z-score analysis, and inter-arrival timing deviations; validated in an isolated Docker network with nmap/hping3/arpspoof; 100% detection accuracy with zero false positives on baseline traffic; generated HTML security reports.
+- *Quantum Computing & Algorithms (Qiskit, PennyLane)*, May 2025 – Aug 2025.
+
+### Two conflicts to resolve before the Projects rewrite
+- **TCF** — the site says "Charity Volunteer — TCF UTSC, 2023 – 2024". LinkedIn Volunteering says **Vice President Finance, The Citizens Foundation Canada, Sep 2022 – May 2024** (led financial planning and budgeting, managed fundraising, first-year rep). VP Finance is a much stronger title. TODO: confirm which to use.
+- **UTSC MSA** — the site says "Jan 2024 – Sep 2024". LinkedIn Volunteering says **Sep 2023 – Aug 2024**. TODO: confirm dates.
+
 **Not currently on the site — decide whether to include:**
 - **The Defy Organization** — CONFIRMED: add to Ventures. Full details in section 4.
 - **UTSC Tennis Court Supervisor** — Aug 2025 – Nov 2025 and May 2026 – Present (Athletics & Recreation).

@@ -1,13 +1,19 @@
 import { site } from "./site";
 
-/** Short About copy, matching the LinkedIn About. Kept to 3–4 sentences. */
+/**
+ * About copy, taken from the LinkedIn About section (Sep 2026) with only
+ * light edits for the web. Kept in Zuhair's own voice — do not rewrite
+ * without asking.
+ */
 export const about = {
   heading: "Security, software, and the things I build on the side.",
   paragraphs: [
-    "I'm a final-year Computer Science student at the University of Toronto Scarborough, specialising in Software Engineering. My focus is cybersecurity — identity and access management, security operations, and cloud — which I've practised across co-ops at Mohawk Medbuy, University of Toronto Schools, and Offline.",
-    "Alongside that I build software and start companies. I'm currently co-founding IDRAK, and I've previously run an e-commerce brand and a global social impact organisation. Quantum computing is an ongoing research interest rather than the headline.",
-    "Outside of work I play basketball, tennis, and soccer, and I spend time cooking, reading, and travelling.",
+    "Hi, I'm Zuhair, a final-year Computer Science student at UofT focused on cybersecurity.",
+    "Most recently, I worked in network and cloud security at Mohawk Medbuy, covering IAM and security operations. Before that, I was at the University of Toronto Schools doing IT and software development, with some SIEM and Suricata alert work along the way.",
+    "I like building software and systems. I'm currently working on IDRAK, a B2B startup building real-time AI guidance for warehouse operations, and I previously started and launched my own traditional clothing brand, KZ Collections.",
+    "I'm also into quantum computing. I did a quantum-safe cryptography research project at UofT and took part in IBM's Qiskit Global Summer School 2026.",
   ],
+  closingLine: "Always happy to connect.",
   /** TODO: replace with real headshot once provided. */
   headshot: {
     src: "/images/headshot.webp",
