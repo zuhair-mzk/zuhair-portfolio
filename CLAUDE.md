@@ -132,7 +132,7 @@ Show as logo + name + date + "Verify" link.
 
 ## 7. About + photos
 - Short About (3–4 sentences), matching the LinkedIn About.
-- Photos go in `public/images/` — convert to WebP, max 1600px wide, lazy-load, meaningful alt text.
+- Photos go in `public/images/`, max 1600px wide, lazy-loaded, with meaningful alt text. **No pre-converted WebP files are checked in:** `sips` on this machine cannot write WebP and there is no `cwebp`, so rather than add a dependency the sources are resized JPEGs and `next/image` negotiates WebP/AVIF per request. If a real WebP pipeline is wanted later, that is the place to add it.
 - Hero: one clean headshot (coming soon — use a placeholder slot).
 - Gallery/About strip: research presentation, Xanadu HQ, KZ Collections pop-up, + new photos TODO. Basketball photo → About/personal section, not the hero.
 

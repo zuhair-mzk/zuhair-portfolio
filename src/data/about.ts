@@ -16,29 +16,33 @@ export const about = {
   closingLine: "Always happy to connect.",
   /** TODO: replace with real headshot once provided. */
   headshot: {
-    src: "/images/headshot.webp",
+    src: "/images/headshot.jpg",
     alt: `${site.name}, portrait`,
     placeholder: true,
   },
-  /** TODO: new photos pending; convert existing ones to WebP in a later commit. */
+  /**
+   * Sources are resized to <=1600px; next/image negotiates WebP/AVIF per
+   * request, so no pre-converted WebP files are checked in.
+   * TODO: new photos pending from Zuhair.
+   */
   gallery: [
     {
-      src: "/images/research-presentation.webp",
+      src: "/images/research-presentation.jpg",
       alt: "Presenting quantum-safe security research at the CMS Undergraduate Research Symposium",
       caption: "Presenting at the CMS Symposium",
     },
     {
-      src: "/images/xanadu-hq.webp",
+      src: "/images/xanadu-hq.jpg",
       alt: "Visiting Xanadu's quantum computing headquarters in downtown Toronto",
       caption: "Xanadu HQ, Toronto",
     },
     {
-      src: "/images/kz-popup.webp",
+      src: "/images/kz-popup.jpg",
       alt: "KZ Collections pop-up shop at the University of Toronto Scarborough",
       caption: "KZ Collections pop-up at UTSC",
     },
     {
-      src: "/images/basketball.webp",
+      src: "/images/basketball.jpg",
       alt: "Winning the interhouse basketball championship",
       caption: "Interhouse basketball championship",
     },

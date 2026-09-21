@@ -8,21 +8,20 @@ interface ResumeModalProps {
 }
 
 export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
-  const [mounted, setMounted] = useState(false);
+  // Stays mounted after the first open so the closing transition can play.
+  // Derived during render rather than in an effect, which would cause a
+  // cascading render on every open.
+  const [hasOpened, setHasOpened] = useState(false);
+  if (isOpen && !hasOpened) setHasOpened(true);
 
   useEffect(() => {
-    if (isOpen) {
-      setMounted(true);
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
 
-  if (!isOpen && !mounted) return null;
+  if (!isOpen && !hasOpened) return null;
 
   const resumes = [
     {
