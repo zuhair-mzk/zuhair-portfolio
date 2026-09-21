@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import ExperienceTimeline from "@/components/ExperienceTimeline";
 import AboutSection from "@/components/AboutSection";
 import ProjectsTabs from "@/components/ProjectsTabs";
 import SkillsTabs from "@/components/SkillsTabs";
@@ -15,108 +16,19 @@ export default function Home() {
       {/* About */}
       <AboutSection />
 
-      {/* Experience pillars */}
+      {/* Experience */}
       <section id="experience" className="section">
         <div className="container-main">
           <p className="section-label mb-2 sm:mb-3 text-xs sm:text-sm">Experience</p>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">Domains I'm Actively Building In</h2>
-          <p className="text-sm sm:text-base lg:text-xl text-slate-400 max-w-3xl mb-6 sm:mb-12 leading-relaxed">
-            A quick snapshot of my main focus areas: quantum computing, cybersecurity,
-            software engineering, startups, and community work.
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
+            Where I&apos;ve worked.
+          </h2>
+          <p className="text-sm sm:text-base lg:text-xl text-slate-400 max-w-3xl mb-8 sm:mb-12 leading-relaxed">
+            Three security and software co-ops across healthcare supply chain,
+            education IT, and an early-stage startup.
           </p>
 
-          {/* Mobile: Horizontal scrolling cards */}
-          <div className="md:hidden overflow-x-auto -mx-4 px-4 pb-4">
-            <div className="flex gap-4" style={{ width: 'max-content' }}>
-              <div style={{ width: '85vw', maxWidth: '400px' }}>
-                <PillarCard
-                  title="Quantum Computing"
-                  body="Researching quantum-safe security, comparing PQC and QKD protocols, and exploring photonic quantum machine learning."
-                  meta="Active research with Prof. Marcelo Ponce (Best Poster – CMS 2025), PennyLane Codebook completion, PhotonQML hackathon (3rd place), Qiskit Summer School Excellence Award, Q-SITE 2025, IBM Quantum certification."
-                  tags={[
-                    "PQC vs QKD Research",
-                    "PennyLane · Qiskit",
-                    "Photonic QML",
-                  ]}
-                />
-              </div>
-              <div style={{ width: '85vw', maxWidth: '400px' }}>
-                <PillarCard
-                  title="Cybersecurity & Networks"
-                  body="End-to-end systems: from OS kernels and concurrent tools to full-stack products and production web apps."
-                  meta="Building IDS from scratch, 15+ CTF challenges (crypto, reverse engineering, packet analysis), CSCD58 network labs (Mininet, SDN, POX), Google Cybersecurity Certificate, secure authentication for Offline app (JWT, bcrypt)."
-                  tags={["IDS/NIDS", "CTFs", "Network Security", "Secure Auth"]}
-                />
-              </div>
-              <div style={{ width: '85vw', maxWidth: '400px' }}>
-                <PillarCard
-                  title="Software Engineering"
-                  body="End-to-end systems: from OS kernels and concurrent tools to full-stack products and production web apps."
-                  meta="StockSocial (FastAPI, PostgreSQL, React Native), Quotis MVP, CMS Connect Android app, Pintos kernel threads, MIPS interpreter, System Monitor (C++/ncurses), MSA UTSC website."
-                  tags={["Full-Stack", "C/C++/Assembly", "React · Next.js", "Databases"]}
-                />
-              </div>
-              <div style={{ width: '85vw', maxWidth: '400px' }}>
-                <PillarCard
-                  title="Startups & Entrepreneurship"
-                  body="Building products from idea to launch, managing teams, and navigating fundraising and early-stage growth."
-                  meta="KZ Collections founder (65% conversion increase, Shopify customizations), Quotis co-founder (Scrum Master, $4K grants), Offline intern (React Native security contributions, pre-seed funded)."
-                  tags={["Technical Leadership", "Fundraising", "Product Growth"]}
-                />
-              </div>
-              <div style={{ width: '85vw', maxWidth: '400px' }}>
-                <PillarCard
-                  title="Community & Leadership"
-                  body="Building strong student communities, organizing large-scale events, and mentoring through sports and tech initiatives."
-                  meta="UTSC MSA webmaster (100+ iftar attendees, React/Node.js/MongoDB), PMCC camp coordinator (3-day multi-sport tournament), Q-SITE VP of Partnerships (200+ attendees, IBM/Xanadu sponsors), Omar Fund & TCF volunteer."
-                  tags={["Event Management", "Web Development", "Volunteering"]}
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Desktop: Grid layout */}
-          <div className="hidden md:block">
-            <div className="grid gap-4 sm:gap-5 md:grid-cols-3">
-              <PillarCard
-                title="Quantum Computing"
-                body="Researching quantum-safe security, comparing PQC and QKD protocols, and exploring photonic quantum machine learning."
-                meta="Active research with Prof. Marcelo Ponce (Best Poster – CMS 2025), PennyLane Codebook completion, PhotonQML hackathon (3rd place), Qiskit Summer School Excellence Award, Q-SITE 2025, IBM Quantum certification."
-                tags={[
-                  "PQC vs QKD Research",
-                  "PennyLane · Qiskit",
-                  "Photonic QML",
-                ]}
-              />
-              <PillarCard
-                title="Cybersecurity & Networks"
-                body="End-to-end systems: from OS kernels and concurrent tools to full-stack products and production web apps."
-                meta="Building IDS from scratch, 15+ CTF challenges (crypto, reverse engineering, packet analysis), CSCD58 network labs (Mininet, SDN, POX), Google Cybersecurity Certificate, secure authentication for Offline app (JWT, bcrypt)."
-                tags={["IDS/NIDS", "CTFs", "Network Security", "Secure Auth"]}
-              />
-              <PillarCard
-                title="Software Engineering"
-                body="End-to-end systems: from OS kernels and concurrent tools to full-stack products and production web apps."
-                meta="StockSocial (FastAPI, PostgreSQL, React Native), Quotis MVP, CMS Connect Android app, Pintos kernel threads, MIPS interpreter, System Monitor (C++/ncurses), MSA UTSC website."
-                tags={["Full-Stack", "C/C++/Assembly", "React · Next.js", "Databases"]}
-              />
-            </div>
-
-            <div className="mt-5 grid gap-5 md:grid-cols-2">
-              <PillarCard
-                title="Startups & Entrepreneurship"
-                body="Building products from idea to launch, managing teams, and navigating fundraising and early-stage growth."
-                meta="KZ Collections founder (65% conversion increase, Shopify customizations), Quotis co-founder (Scrum Master, $4K grants), Offline intern (React Native security contributions, pre-seed funded)."
-                tags={["Technical Leadership", "Fundraising", "Product Growth"]}
-              />
-              <PillarCard
-                title="Community & Leadership"
-                body="Building strong student communities, organizing large-scale events, and mentoring through sports and tech initiatives."
-                meta="UTSC MSA webmaster (100+ iftar attendees, React/Node.js/MongoDB), PMCC camp coordinator (3-day multi-sport tournament), Q-SITE VP of Partnerships (200+ attendees, IBM/Xanadu sponsors), Omar Fund & TCF volunteer."
-                tags={["Event Management", "Web Development", "Volunteering"]}
-              />
-            </div>
-          </div>
+          <ExperienceTimeline />
         </div>
       </section>
 
@@ -208,33 +120,6 @@ export default function Home() {
 }
 
 /* Small helper components */
-
-function PillarCard({
-  title,
-  body,
-  meta,
-  tags,
-}: {
-  title: string;
-  body: string;
-  meta: string;
-  tags: string[];
-}) {
-  return (
-    <article className="card p-6 sm:p-7 hover:border-cyan-400/30 transition-all h-full flex flex-col">
-      <h3 className="text-xl font-bold mb-3">{title}</h3>
-      <p className="text-base text-slate-300 mb-3 leading-relaxed">{body}</p>
-      <p className="text-sm text-slate-400 mb-4 grow">{meta}</p>
-      <div className="flex flex-wrap gap-2">
-        {tags.map((t) => (
-          <span key={t} className="tag text-xs px-3 py-1">
-            {t}
-          </span>
-        ))}
-      </div>
-    </article>
-  );
-}
 
 function ProjectCard({
   title,
