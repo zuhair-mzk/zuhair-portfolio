@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+import { THEME_EVENT } from "./ThemeToggle";
+
 export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -11,6 +13,20 @@ export default function AnimatedBackground() {
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    // Particle and trail colours come from the theme tokens in globals.css,
+    // so the background follows the light/dark toggle.
+    let particleRgb = "34, 211, 238";
+    let trailRgb = "2, 6, 23";
+
+    const readThemeColours = () => {
+      const styles = getComputedStyle(document.documentElement);
+      particleRgb = styles.getPropertyValue("--particle").trim() || particleRgb;
+      trailRgb =
+        styles.getPropertyValue("--particle-trail").trim() || trailRgb;
+    };
+    readThemeColours();
+    window.addEventListener(THEME_EVENT, readThemeColours);
 
     // Set canvas size
     const setCanvasSize = () => {
@@ -53,7 +69,7 @@ export default function AnimatedBackground() {
         if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(34, 211, 238, 0.3)";
+        ctx.fillStyle = `rgba(${particleRgb}, 0.3)`;
         ctx.fill();
       }
     }
@@ -67,7 +83,7 @@ export default function AnimatedBackground() {
 
     // Animation loop
     const animate = () => {
-      ctx.fillStyle = "rgba(2, 6, 23, 0.05)";
+      ctx.fillStyle = `rgba(${trailRgb}, 0.05)`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw particles
@@ -87,20 +103,22 @@ export default function AnimatedBackground() {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(34, 211, 238, ${0.15 * (1 - distance / 150)})`;
+            ctx.strokeStyle = `rgba(${particleRgb}, ${0.15 * (1 - distance / 150)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         });
       });
 
-      requestAnimationFrame(animate);
+      frame = requestAnimationFrame(animate);
     };
 
-    animate();
+    let frame = requestAnimationFrame(animate);
 
     return () => {
+      cancelAnimationFrame(frame);
       window.removeEventListener("resize", setCanvasSize);
+      window.removeEventListener(THEME_EVENT, readThemeColours);
     };
   }, []);
 

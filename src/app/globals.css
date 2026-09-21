@@ -1,10 +1,135 @@
 @import "tailwindcss";
 
+/*
+ * Theme tokens.
+ *
+ * Dark is the default. Light is opt-in via [data-theme="light"] on <html>,
+ * set by ThemeToggle and by the no-flash script in layout.tsx.
+ *
+ * The @theme block below remaps Tailwind's slate/cyan/emerald scales onto
+ * these tokens, so existing utility classes are themeable without renaming
+ * them. As each component is rewritten, prefer the semantic names.
+ */
+
 :root {
+  color-scheme: dark;
+
+  /* Surfaces */
   --bg: #020617;
-  --card: #020617;
-  --card-alt: #030712;
-  --accent: #22d3ee;
+  --surface: #0f172a;
+  --surface-2: #1e293b;
+
+  /* Text, weakest to strongest */
+  --fg-subtle: #64748b;
+  --fg-muted: #94a3b8;
+  --fg-body: #cbd5e1;
+  --fg-strong: #e2e8f0;
+  --fg: #f8fafc;
+
+  /* Lines */
+  --border: #475569;
+  --border-strong: #334155;
+
+  /* Accent ramp */
+  --accent-100: #cffafe;
+  --accent-200: #a5f3fc;
+  --accent-300: #67e8f9;
+  --accent-400: #22d3ee;
+  --accent-500: #06b6d4;
+  --accent-label: #7dd3fc;
+
+  /* Gradient partner */
+  --accent2-300: #6ee7b7;
+  --accent2-400: #34d399;
+
+  /* Composites */
+  --card-bg: rgb(15 23 42 / 0.6);
+  --card-border: rgb(6 182 212 / 0.15);
+  --card-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  --accent-glow: 0 0 25px rgba(34, 211, 238, 0.7);
+
+  /* Canvas particles, read by AnimatedBackground */
+  --particle: 34, 211, 238;
+  --particle-trail: 2, 6, 23;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f1f1ee;
+  --surface: #e7e7e2;
+  --surface-2: #deded8;
+
+  --fg-subtle: #6b6b62;
+  --fg-muted: #55554c;
+  --fg-body: #2e2e28;
+  --fg-strong: #1c1c18;
+  --fg: #14140f;
+
+  --border: #b4b4aa;
+  --border-strong: #c6c6be;
+
+  --accent-100: #1d4478;
+  --accent-200: #23528f;
+  --accent-300: #285aa0;
+  --accent-400: #285aa0;
+  --accent-500: #285aa0;
+  --accent-label: #3a6cb3;
+
+  --accent2-300: #2f6fa8;
+  --accent2-400: #2f6fa8;
+
+  --card-bg: rgb(255 255 255 / 0.72);
+  --card-border: rgb(40 90 160 / 0.18);
+  --card-shadow: 0 10px 30px rgba(20, 20, 15, 0.08);
+  --accent-glow: 0 6px 18px rgba(40, 90, 160, 0.28);
+
+  --particle: 40, 90, 160;
+  --particle-trail: 241, 241, 238;
+}
+
+/* Remap Tailwind's palette onto the tokens above. */
+@theme inline {
+  --color-slate-950: var(--bg);
+  --color-slate-900: var(--surface);
+  --color-slate-800: var(--surface-2);
+  --color-slate-700: var(--border-strong);
+  --color-slate-600: var(--border);
+  --color-slate-500: var(--fg-subtle);
+  --color-slate-400: var(--fg-muted);
+  --color-slate-300: var(--fg-body);
+  --color-slate-200: var(--fg-strong);
+  --color-slate-100: var(--fg-strong);
+  --color-slate-50: var(--fg);
+
+  --color-cyan-100: var(--accent-100);
+  --color-cyan-200: var(--accent-200);
+  --color-cyan-300: var(--accent-300);
+  --color-cyan-400: var(--accent-400);
+  --color-cyan-500: var(--accent-500);
+  --color-sky-300: var(--accent-label);
+
+  --color-emerald-300: var(--accent2-300);
+  --color-emerald-400: var(--accent2-400);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+/* ThemeToggle shows one icon per theme, chosen in CSS so it is correct
+   before hydration. */
+.theme-icon-moon {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-icon-sun {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-icon-moon {
+  display: block;
 }
 
 /* Scroll */
@@ -62,7 +187,7 @@ html {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  color: rgb(125 211 252 / 0.7);
+  color: var(--accent-label);
 }
 
 .section-title {
@@ -79,7 +204,7 @@ html {
 
 .section-intro {
   font-size: 0.875rem;
-  color: rgb(148 163 184);
+  color: var(--fg-muted);
   max-width: 42rem;
 }
 
@@ -92,9 +217,9 @@ html {
 /* Card */
 .card {
   border-radius: 1rem;
-  border: 1px solid rgb(6 182 212 / 0.15);
-  background-color: rgb(15 23 42 / 0.6);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
   backdrop-filter: blur(8px);
 }
 
@@ -103,23 +228,23 @@ html {
   display: inline-flex;
   align-items: center;
   border-radius: 9999px;
-  border: 1px solid rgb(71 85 105 / 0.5);
+  border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
   padding: 0.125rem 0.625rem;
   font-size: 11px;
   font-weight: 500;
-  color: rgb(203 213 225);
+  color: var(--fg-body);
 }
 
 .chip {
   display: inline-flex;
   align-items: center;
   border-radius: 9999px;
-  border: 1px solid rgb(6 182 212 / 0.4);
-  background-color: rgb(6 182 212 / 0.1);
+  border: 1px solid color-mix(in srgb, var(--accent-500) 40%, transparent);
+  background-color: color-mix(in srgb, var(--accent-500) 10%, transparent);
   padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 500;
-  color: rgb(165 243 252);
+  color: var(--accent-100);
 }
 
 /* Animations */

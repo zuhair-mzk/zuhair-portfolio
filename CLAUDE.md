@@ -17,7 +17,11 @@ Target: Winter 2027 cybersecurity co-op roles in Toronto.
 
 Visual direction: **dark theme stays the default.** Add a light/dark toggle; light mode matches the LinkedIn banner — off-white background (#F1F1EE), near-black text, one blue accent (#285AA0). Both themes use a serif display font (Latin Modern Roman / a similar serif such as "Newsreader" or "Source Serif") + clean sans for body, minimal, lots of whitespace. The quantum circuit motif can appear once, subtly (e.g. hero background or quantum section header) — not everywhere.
 
-Theme mechanics: colors as CSS custom properties on `:root`, overridden under `[data-theme="light"]`; toggle persists to localStorage; inline script in `layout.tsx` sets the attribute before paint to avoid a flash. Components reference semantic classes/vars, never hard-coded `slate-*`/`cyan-*`.
+Theme mechanics (implemented): colors are CSS custom properties on `:root`, overridden under `:root[data-theme="light"]`. `ThemeToggle` writes the attribute and persists to localStorage; an inline script in `layout.tsx` sets it before paint to avoid a flash. Dark is the default and an explicit stored choice is the only thing that overrides it — OS `prefers-color-scheme` is deliberately ignored.
+
+The toggle is stateless: both icons render and CSS picks one off `[data-theme]`, so the correct icon shows before hydration and before JS runs.
+
+**Palette remap:** rather than renaming ~215 `slate-*`/`cyan-*` utility classes across components that sections 3–7 rewrite anyway, `globals.css` uses Tailwind v4's `@theme inline` to point those scales at the tokens. Existing classes are themeable as-is (`.text-slate-400` compiles to `color:var(--fg-muted)`, and opacity modifiers still work via `color-mix`). **As each component is rewritten, replace its `slate-*`/`cyan-*` classes with semantic token names** — the remap is a bridge, not the destination.
 
 ## 2. Stale / broken things to fix
 - Hero: "Currently researching security architectures at UofT" → outdated. Remove.
@@ -52,7 +56,7 @@ Theme mechanics: colors as CSS custom properties on `:root`, overridden under `[
 ## 3. Experience (new section — timeline, most recent first)
 Source: resume (Sep 2026) + LinkedIn. Where they conflict, the conflict is marked TODO.
 
-**Mohawk Medbuy Corporation (MMC)** — Junior Network & Cybersecurity Co-op · Toronto, ON (Hybrid) · May 2026 – Aug 2026
+**Mohawk Medbuy Corporation (MMC)** — Network & Cloud Security Co-op · Toronto, ON (Hybrid) · May 2026 – Aug 2026
 (Worked out of both the Burlington and Toronto offices; the site says Toronto / Hybrid.)
 - Investigated phishing and social engineering incidents using KnowBe4 PhishER, Proofpoint, and Cisco Umbrella; shadowed a third-party penetration testing engagement; resolved ServiceNow VPN, MFA, and access-control incidents through Entra ID and Exchange root-cause analysis
 - Administered IAM and RBAC in the SAP Ariba backend across 75+ GTA hospitals — provisioning roles, managing MFA lifecycle operations, and reviewing user access for segregation-of-duties conflicts against ISO/IEC 27001 controls during a Deloitte co-delivered SAP S/4HANA transformation

@@ -4,7 +4,7 @@ import type { Role } from "./types";
 export const experience: Role[] = [
   {
     org: "Mohawk Medbuy Corporation",
-    title: "Junior Network & Cybersecurity Co-op",
+    title: "Network & Cloud Security Co-op",
     location: "Toronto, ON (Hybrid)",
     period: "May 2026 – Aug 2026",
     start: "2026-05",
