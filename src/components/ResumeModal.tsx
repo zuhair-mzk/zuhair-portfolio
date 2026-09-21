@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 
+import { resumes } from "@/data/resumes";
+
 interface ResumeModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -23,26 +25,6 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
   if (!isOpen && !hasOpened) return null;
 
-  const resumes = [
-    {
-      title: "Software Engineering Resume",
-      description: "Full-stack development & system design",
-      file: "/resume/swe_resume.pdf",
-      icon: "💻",
-    },
-    {
-      title: "Quantum Computing Resume",
-      description: "Quantum algorithms & research",
-      file: "/resume/quantum.pdf",
-      icon: "⚛️",
-    },
-    {
-      title: "Cybersecurity Resume",
-      description: "PQC, cryptography & security",
-      file: "/resume/cyber.pdf",
-      icon: "🔒",
-    },
-  ];
 
   const handleDownload = (file: string) => {
     const link = document.createElement("a");

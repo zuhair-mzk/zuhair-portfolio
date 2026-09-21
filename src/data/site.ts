@@ -15,6 +15,8 @@ export const site = {
   email: "zuhair.khan@mail.utoronto.ca",
   github: "https://github.com/zuhair-mzk",
   linkedin: "https://www.linkedin.com/in/zuhair-khan-3aab98373/",
+  instagram: "https://www.instagram.com/zuhair_mzk/",
+  devpost: "https://devpost.com/zuhair-mzk",
   url: "https://zuhairkhan.ca",
   // Phone is on the resume but deliberately not published here.
 } as const;

@@ -1,13 +1,11 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
 
 import { about } from "@/data/about";
 
 export default function AboutSection() {
-  const [showMore, setShowMore] = useState(false);
-  const [intro, ...rest] = about.paragraphs;
+  // Keep the row full: 4 photos sit in 4 columns, 5 in 5.
+  const columns =
+    about.gallery.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-4";
 
   return (
     <section id="about" className="section">
@@ -15,41 +13,24 @@ export default function AboutSection() {
         <p className="section-label mb-2 sm:mb-3 text-xs sm:text-sm text-center">
           About
         </p>
-        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-center max-w-3xl">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-5 sm:mb-6 text-center">
           {about.heading}
         </h2>
 
-        <div className="max-w-3xl mb-8 sm:mb-10 lg:mb-12 text-center space-y-4">
-          <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">
-            {intro}
-          </p>
-
-          {showMore &&
-            rest.map((paragraph) => (
-              <p
-                key={paragraph}
-                className="text-sm sm:text-base lg:text-lg text-slate-400 leading-relaxed"
-              >
-                {paragraph}
-              </p>
-            ))}
-
-          {showMore && (
-            <p className="text-sm sm:text-base text-slate-400">
-              {about.closingLine}
+        <div className="max-w-2xl mb-8 sm:mb-10 lg:mb-12 text-center space-y-3">
+          {about.paragraphs.map((paragraph) => (
+            <p
+              key={paragraph}
+              className="text-sm sm:text-base lg:text-lg text-slate-400 leading-relaxed"
+            >
+              {paragraph}
             </p>
-          )}
-
-          <button
-            onClick={() => setShowMore(!showMore)}
-            aria-expanded={showMore}
-            className="text-cyan-400 hover:text-cyan-300 font-medium text-sm sm:text-base transition-colors inline-flex items-center gap-1"
-          >
-            {showMore ? "↑ Show less" : "↓ Read more"}
-          </button>
+          ))}
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 max-w-5xl w-full">
+        <div
+          className={`grid grid-cols-2 ${columns} gap-2 sm:gap-3 lg:gap-4 max-w-5xl w-full`}
+        >
           {about.gallery.map((photo) => (
             <figure
               key={photo.src}
